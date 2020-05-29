@@ -1,0 +1,43 @@
+###########################################
+######### Google Cloud Platform ###########
+###########################################
+project = "<YOUR-GCP-PROJECT>"
+region = "<YOUR-GCP-REGION>"
+zone =  "<YOUR-GCP-ZONE>"
+
+###########################################
+#############     DockerHub   #############
+###########################################
+
+dockerhub_username = "<dockerhub username>"
+dockerhub_password = "<dockerhub password>"
+
+###########################################
+############# Confluent Cloud #############
+###########################################
+
+bootstrap_server = "<CCLOUD_BOOTSTRAP_SERVER>"
+ccloud_api_key = "<CCLOUD_API_KEY>"
+ccloud_api_secret = "<CCLOUD_API_SECRET>"
+
+###########################################
+############# Demo Sizing = S ############
+###########################################
+
+mqttd_replicas_count= "3"
+
+###########################################
+###### (Optional) Demo Advanced Setup #####
+###########################################
+## The values below are set as default in .tf files
+
+# node_type = "n1-standard-1"
+# monitoring_node_type = "n1-standard-1"
+
+# cluster_name      = "waterstream-demo-cluster"
+
+# preemptible_nodes = "false"
+
+# For the example, we recommend a /16 network for the VPC. Note that when changing the size of the network,
+# you will have to adjust the 'cidr_subnetwork_width_delta' in the 'vpc_network' -module accordingly.
+# vpc_cidr_block = "10.3.0.0/16"
