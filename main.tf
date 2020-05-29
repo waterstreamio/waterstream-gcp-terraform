@@ -303,7 +303,7 @@ resource "google_compute_instance_template" "mqttd-monitoring" {
 
   metadata = {
     app = "mqttd-monitoring"
-    mqttd-grafana-dashboard-json = file("../mqttd/mqttd-grafana-dashboard-debug.json")
+    mqttd-grafana-dashboard-json = file("mqttd/mqttd-grafana-dashboard-debug.json")
     prometheus-yaml = templatefile("mqttd/prometheus.yaml.template", {
       targetsStr: join(",", [for x in data.google_compute_instance.mqttd_nodes: format("'%s:%d'", x.network_interface.0.network_ip, 1884)])
     })
