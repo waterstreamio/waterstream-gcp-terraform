@@ -182,6 +182,7 @@ resource "google_compute_instance_template" "mqttd" {
 export MQTTD_VERSION=${var.mqttd_version}
 export CCLOUD_API_KEY=${var.ccloud_api_key}
 export CCLOUD_API_SECRET=${var.ccloud_api_secret}
+export WATERSTREAM_MAX_HEAP=${var.mqttd_instance_heap}
 EOF
 
     user-data = <<EOF

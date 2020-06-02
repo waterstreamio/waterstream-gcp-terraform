@@ -36,6 +36,9 @@ mqttd_replicas_count= "3"
 
 # cluster_name      = "waterstream-demo-cluster"
 
+//default - suits for n1-standard-1
+mqttd_instance_heap = "3000m"
+
 # preemptible_nodes = "false"
 
 # For the example, we recommend a /16 network for the VPC. Note that when changing the size of the network,

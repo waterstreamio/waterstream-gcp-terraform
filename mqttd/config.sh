@@ -63,12 +63,6 @@ export SSL_ENABLED=false
 #Authentication
 #USERS_FILE_PATH=
 
-#JMX settings for debug and profiling
-export JMX_OPTIONS=
-#JMX_PORT=5000
-#RMI_PORT=5001
-#export JMX_OPTIONS="-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=$JMX_PORT -Dcom.sun.management.jmxremote.rmi.port=$RMI_PORT -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
-
 #Kotlin coroutines thread pool size. Optimal coroutines threads  number is 2*CPU cores number
 export COROUTINES_THREADS=8
 #Custom log configuration file. At the moment doesn't apply to dockerized mqttd.

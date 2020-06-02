@@ -26,10 +26,11 @@ variable cluster_name {
   type = string
 }
 
-//variable "mqttd_instance_heap" {
-//  type        = string
-//  default     = "5G"
-//}
+variable "mqttd_instance_heap" {
+  description = "Xmx parameter value"
+  type        = string
+  default     = "3000m"
+}
 
 # For the example, we recommend a /16 network for the VPC. Note that when changing the size of the network,
 # you will have to adjust the 'cidr_subnetwork_width_delta' in the 'vpc_network' -module accordingly.
