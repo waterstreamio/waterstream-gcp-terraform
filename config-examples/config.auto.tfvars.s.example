@@ -31,6 +31,7 @@ mqttd_replicas_count= "3"
 ###########################################
 ## The values below are set as default in .tf files
 
+mqttd_version = "1.0.6"
 # node_type = "n1-standard-1"
 # monitoring_node_type = "n1-standard-1"
 
