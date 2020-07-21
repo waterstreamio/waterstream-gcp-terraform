@@ -42,7 +42,7 @@ variable "vpc_cidr_block" {
 
 variable "mqttd_version" {
   type        = string
-  default     = "1.0.3"
+  default     = "1.0.13"
 }
 
 variable "mqttd_replicas_count" {
