@@ -177,6 +177,7 @@ resource "google_compute_instance_template" "mqttd" {
     app = "mqttd"
     mqttd-config-sh = file("mqttd/config.sh")
     mqttd-run-dockerized-sh = file("mqttd/runDockerized.sh")
+    waterstream-license = file("waterstream.license")
     tf-config-sh = <<EOF
 #!/bin/sh
 export MQTTD_VERSION=${var.mqttd_version}
@@ -205,6 +206,7 @@ runcmd:
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/tf-config-sh", -H, "Metadata-Flavor: Google", -o, tfConfig.sh]
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/mqttd-config-sh", -H, "Metadata-Flavor: Google", -o, config.sh]
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/mqttd-run-dockerized-sh", -H, "Metadata-Flavor: Google", -o, runDockerized.sh]
+  - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/waterstream-license", -H, "Metadata-Flavor: Google", -o, waterstream.license]
   - echo scripts download done >> mqttd_start.log
   - chmod a+x config.sh
   - chmod a+x runDockerized.sh

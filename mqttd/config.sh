@@ -47,6 +47,7 @@ export MQTT_BLOCKING_THREAD_POOL_SIZE=10
 export MAX_QUEUED_INCOMMING_MESSAGES=1000
 #Maximal number of in-flight messages per client - QoS 1 or QoS 2 messages which are in the middle of the communication sequence.
 export MQTT_MAX_IN_FLIGHT_MESSAGES=10
+export MQTT_MAX_MESSAGE_SIZE=210000
 
 #Monitoring
 #==========
