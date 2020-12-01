@@ -5,6 +5,7 @@ Waterstream GCP Compute Engine setup with Confluent Cloud
 
   - GCP account
   - Terraform installed locally
+  - Waterstream license file
   
 ## Create Kafka topics
 
@@ -21,7 +22,9 @@ And run the topic creation script with your cluster ID (not to mix up with clust
 ## Configure 
     
 TODO: describe 
-    
+   
+Put Waterstream license file into the project root as `waterstream.license`.
+
 Prepare Terraform plugins:
 ```shell script
 terraform init
