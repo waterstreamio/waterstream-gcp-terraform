@@ -8,7 +8,7 @@ SCRIPT_DIR=`realpath $(dirname "$0")`
 
 CONTAINER_NAME=waterstream-kafka
 echo Starting $CONTAINER_NAME
-IMAGE_NAME=simplematter/waterstream-kafka:$MQTTD_VERSION
+IMAGE_NAME=simplematter/waterstream-kafka-minified:$MQTTD_VERSION
 
 #interactive
 #INTERACTIVE=-it
