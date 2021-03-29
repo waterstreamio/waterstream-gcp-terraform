@@ -395,6 +395,11 @@
           "expr": "sum(mqtt_proxy_overloaded_clients_disconnected)",
           "legendFormat": "overloaded disconnected",
           "refId": "G"
+        },
+        {
+          "expr": "sum(mqtt_proxy_non_initialized_connections_closed)",
+          "legendFormat": "non-initialized connections closed",
+          "refId": "H"
         }
       ],
       "thresholds": [],

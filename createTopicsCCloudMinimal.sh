@@ -3,6 +3,13 @@
 set -e
 
 CLUSTER_ID=${1}
+
+if [ -z "$CLUSTER_ID" ]
+then
+  echo Confluent Cloud Cluster ID not specified
+  exit 1
+fi
+
 #API_KEY=${1}
 #API_SECRET=${2}
 #CLUSTER_ID=${3}
@@ -34,6 +41,6 @@ $CREATE_TOPIC $DEFAULT_MESSAGES_TOPIC --cluster ${CLUSTER_ID}  --partitions ${DE
 $CREATE_TOPIC $SESSION_TOPIC --cluster ${CLUSTER_ID} --partitions 2 --config cleanup.policy=compact --config min.compaction.lag.ms=60000 --config delete.retention.ms=600000 || true
 $CREATE_TOPIC $RETAINED_MESSAGES_TOPIC --cluster ${CLUSTER_ID} --partitions 1  --config cleanup.policy=compact --config min.compaction.lag.ms=60000 --config delete.retention.ms=600000 || true
 $CREATE_TOPIC $CONNECTION_TOPIC --cluster ${CLUSTER_ID} --partitions 1 --config cleanup.policy=delete --config retention.ms=60000 || true
-$CREATE_TOPIC $HEARTBEAT_TOPIC --cluster ${CLUSTER_ID} --partitions 1 --config cleanup.policy=delete --config retention.ms=60000
+$CREATE_TOPIC $HEARTBEAT_TOPIC --cluster ${CLUSTER_ID} --partitions 1 --config cleanup.policy=delete --config retention.ms=60000 || true
 
 ccloud kafka topic list --cluster ${CLUSTER_ID}

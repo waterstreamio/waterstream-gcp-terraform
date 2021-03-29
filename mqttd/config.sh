@@ -22,7 +22,8 @@ export KAFKA_TRANSACTIONAL_ID=
 export KAFKA_MESSAGES_DEFAULT_TOPIC=mqtt_messages
 #Additional topics for messages and respective MQTT topic patterns.
 #Comma-separated: kafkaTopic1:pattern1,kafkaTopic2:pattern2. Patterns follow the MQTT subscription wildcards rules
-export KAFKA_MESSAGES_TOPICS_PATTERNS="sensor-data:vehicles/sensor/data/#"
+#export KAFKA_MESSAGES_TOPICS_PATTERNS="sensor-data:vehicles/sensor/data/#"
+export KAFKA_MESSAGES_TOPICS_PATTERNS=""
 #Retained messages topic - for messages which should be delivered automatically on subscription. Should be compacted.
 export RETAINED_MESSAGES_TOPIC=mqtt_retained_messages
 #Session state persistence topic. Should be compacted
@@ -37,6 +38,10 @@ export KAFKA_RESET_STREAMS_ON_START=false
 export KAFKA_RESET_STREAMS_ON_EXIT=false
 #Queue length for reading messages from Kafka
 export CENTRALIZED_CONSUMER_LISTENER_QUEUE=32
+#Port for KafkaStreams app communication between nodes
+export KAFKA_STREAMS_APP_SERVER_PORT=1882
+#Shared token for KafkaStreams app communication between nodes
+export KAFKA_STREAMS_APP_SERVER_SHARED_TOKEN=sampleToken
 
 #MQTT settings
 #=============

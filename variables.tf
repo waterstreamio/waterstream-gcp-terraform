@@ -26,10 +26,10 @@ variable cluster_name {
   type = string
 }
 
-variable "mqttd_instance_heap" {
-  description = "Xmx parameter value"
-  type        = string
-  default     = "3000m"
+variable "waterstream_ram_percentage" {
+  description = "JVM MaxRAMPercentage parameter value"
+  type        = number
+  default     = 80
 }
 
 # For the example, we recommend a /16 network for the VPC. Note that when changing the size of the network,
@@ -42,13 +42,19 @@ variable "vpc_cidr_block" {
 
 variable "mqttd_version" {
   type        = string
-  default     = "1.3.5"
+  default     = "1.3.12"
 }
 
 variable "mqttd_replicas_count" {
   type        = string
   default     = "3"
 }
+
+variable "kafka_streams_replication_factor" {
+  type        = number
+  default     = 3
+}
+
 
 ###########################################
 #############     DockerHub   #############

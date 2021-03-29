@@ -95,6 +95,23 @@ resource "google_compute_firewall" "mqttd-debug" {
     "0.0.0.0/0"]
 }
 
+resource "google_compute_firewall" "mqttd-appserver" {
+  name = "${var.cluster_name}-mqttd-appserver-${random_string.suffix.result}"
+  network = google_compute_network.net.name
+
+  allow {
+    protocol = "tcp"
+    ports = [
+      "1882"
+    ]
+  }
+
+  target_tags = ["mqttd"]
+
+    source_tags = ["mqttd"]
+}
+
+
 resource "google_compute_firewall" "mqttd-monitoring" {
   name = "${var.cluster_name}-monitoring-${random_string.suffix.result}"
   network = google_compute_network.net.name
@@ -170,7 +187,7 @@ resource "google_compute_instance_template" "mqttd" {
     network = google_compute_network.net.id
 
     //uncomment to grant public IP
-    //    access_config { }
+    //access_config { }
   }
 
   metadata = {
@@ -183,7 +200,9 @@ resource "google_compute_instance_template" "mqttd" {
 export MQTTD_VERSION=${var.mqttd_version}
 export CCLOUD_API_KEY=${var.ccloud_api_key}
 export CCLOUD_API_SECRET=${var.ccloud_api_secret}
-export WATERSTREAM_MAX_HEAP=${var.mqttd_instance_heap}
+export WATERSTREAM_RAM_PERCENTAGE=${var.waterstream_ram_percentage}
+export KAFKA_STREAMS_APP_SERVER_HOST=`cat node_ip.txt`
+export KAFKA_STREAMS_REPLICATION_FACTOR=${var.kafka_streams_replication_factor}
 EOF
 
     user-data = <<EOF
@@ -207,6 +226,7 @@ runcmd:
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/mqttd-config-sh", -H, "Metadata-Flavor: Google", -o, config.sh]
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/mqttd-run-dockerized-sh", -H, "Metadata-Flavor: Google", -o, runDockerized.sh]
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/waterstream-license", -H, "Metadata-Flavor: Google", -o, waterstream.license]
+  - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip", -H, "Metadata-Flavor: Google", -o, node_ip.txt]
   - echo scripts download done >> mqttd_start.log
   - chmod a+x config.sh
   - chmod a+x runDockerized.sh
