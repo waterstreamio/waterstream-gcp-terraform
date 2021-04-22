@@ -40,14 +40,29 @@ variable "vpc_cidr_block" {
   default     = "10.3.0.0/16"
 }
 
-variable "mqttd_version" {
+variable "waterstream_version" {
   type        = string
-  default     = "1.3.12"
+  default     = "1.3.14"
 }
 
-variable "mqttd_replicas_count" {
+variable "waterstream_replicas_count" {
   type        = string
   default     = "3"
+}
+
+variable "waterstream_kafka_linger_ms" {
+  type        = number
+  default     = 0
+}
+
+variable "waterstream_kafka_batch_size" {
+  type        = number
+  default     = 16348
+}
+
+variable "waterstream_kafka_compression_type" {
+  type        = string
+  default     = "snappy"
 }
 
 variable "kafka_streams_replication_factor" {
@@ -60,11 +75,15 @@ variable "kafka_streams_replication_factor" {
 #############     DockerHub   #############
 ###########################################
 
+#For tests that involve private images
+
 variable "dockerhub_username" {
+  default = ""
   type = string
 }
 
 variable "dockerhub_password" {
+  default = ""
   type = string
 }
 

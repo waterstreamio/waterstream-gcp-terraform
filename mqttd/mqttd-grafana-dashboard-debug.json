@@ -336,6 +336,118 @@
         "x": 12,
         "y": 8
       },
+      "id": 21,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "Current subscriptions",
+          "yaxis": 2
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "sum(mqtt_proxy_subscribe_received)",
+          "legendFormat": "SUBSCRIBE received",
+          "refId": "A"
+        },
+        {
+          "expr": "sum(mqtt_proxy_suback_sent)",
+          "hide": true,
+          "legendFormat": "SUBACK sent",
+          "refId": "B"
+        },
+        {
+          "expr": "sum(mqtt_proxy_unsubscribe_received)",
+          "legendFormat": "UNSUBSCRIBE received",
+          "refId": "C"
+        },
+        {
+          "expr": "sum(mqtt_proxy_unsuback_sent)",
+          "hide": true,
+          "legendFormat": "UNSUBACK sent",
+          "refId": "D"
+        },
+        {
+          "expr": "sum(mqtt_proxy_subscriptions_current)",
+          "legendFormat": "Current subscriptions",
+          "refId": "E"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Subscriptions",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 16
+      },
       "id": 7,
       "legend": {
         "avg": false,
@@ -407,96 +519,6 @@
       "timeRegions": [],
       "timeShift": null,
       "title": "Client connections details",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 16
-      },
-      "id": 9,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "options": {
-        "dataLinks": []
-      },
-      "percentage": false,
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "expr": "jvm_memory_bytes_used{service=\"mqttd-monitoring\", area=\"heap\"}",
-          "legendFormat": "Heap usage, bytes ({{instance}})",
-          "refId": "A"
-        },
-        {
-          "expr": "jvm_memory_bytes_max{service=\"mqttd-monitoring\", area=\"heap\"}",
-          "legendFormat": "Heap max size, bytes ({{instance}})",
-          "refId": "B"
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "MQTTD Heap",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -641,7 +663,7 @@
         "x": 0,
         "y": 24
       },
-      "id": 15,
+      "id": 9,
       "legend": {
         "avg": false,
         "current": false,
@@ -667,16 +689,21 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "jvm_threads_state{service=\"mqttd-monitoring\"}",
-          "legendFormat": "threads({{state}})",
+          "expr": "jvm_memory_bytes_used{service=\"mqttd-monitoring\", area=\"heap\"}",
+          "legendFormat": "Heap usage, bytes ({{instance}})",
           "refId": "A"
+        },
+        {
+          "expr": "jvm_memory_bytes_max{service=\"mqttd-monitoring\", area=\"heap\"}",
+          "legendFormat": "Heap max size, bytes ({{instance}})",
+          "refId": "B"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Threads",
+      "title": "MQTTD Heap",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -825,6 +852,91 @@
         "w": 12,
         "x": 0,
         "y": 32
+      },
+      "id": 15,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
+      "percentage": false,
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "expr": "jvm_threads_state{service=\"mqttd-monitoring\"}",
+          "legendFormat": "threads({{state}})",
+          "refId": "A"
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Threads",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 40
       },
       "id": 19,
       "legend": {

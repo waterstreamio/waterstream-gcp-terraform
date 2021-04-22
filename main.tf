@@ -197,12 +197,15 @@ resource "google_compute_instance_template" "mqttd" {
     waterstream-license = file("waterstream.license")
     tf-config-sh = <<EOF
 #!/bin/sh
-export MQTTD_VERSION=${var.mqttd_version}
+export WATERSTREAM_VERSION=${var.waterstream_version}
 export CCLOUD_API_KEY=${var.ccloud_api_key}
 export CCLOUD_API_SECRET=${var.ccloud_api_secret}
 export WATERSTREAM_RAM_PERCENTAGE=${var.waterstream_ram_percentage}
 export KAFKA_STREAMS_APP_SERVER_HOST=`cat node_ip.txt`
 export KAFKA_STREAMS_REPLICATION_FACTOR=${var.kafka_streams_replication_factor}
+export KAFKA_PRODUCER_LINGER_MS=${var.waterstream_kafka_linger_ms}
+export KAFKA_BATCH_SIZE=${var.waterstream_kafka_batch_size}
+export KAFKA_COMPRESSION_TYPE=${var.waterstream_kafka_compression_type}
 EOF
 
     user-data = <<EOF
@@ -231,9 +234,6 @@ runcmd:
   - chmod a+x config.sh
   - chmod a+x runDockerized.sh
   - sleep 10
-  - sudo -u mqttd docker login -u ${var.dockerhub_username} -p ${var.dockerhub_password}
-  - echo docker login -u ${var.dockerhub_username} -p ${var.dockerhub_password} >> login.sh
-  - echo docker login done >> mqttd_start.log
   - sudo -u mqttd sh runDockerized.sh
   - echo init done >>  mqttd_start.log
 bootcmd:
@@ -241,6 +241,9 @@ bootcmd:
 
 EOF
   }
+
+//For tests - log in to access private images:
+//  - sudo -u mqttd docker login -u ${var.dockerhub_username} -p ${var.dockerhub_password}
 
   service_account {
     scopes = [
@@ -450,7 +453,7 @@ resource "google_compute_instance_group_manager" "mqttd_group" {
 
   target_pools = [
     google_compute_target_pool.mqttd.self_link]
-  target_size = var.mqttd_replicas_count
+  target_size = var.waterstream_replicas_count
   wait_for_instances = true
 
   named_port {

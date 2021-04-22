@@ -32,5 +32,8 @@ $DELETE_TOPIC $SESSION_TOPIC --cluster ${CLUSTER_ID} || true
 $DELETE_TOPIC $RETAINED_MESSAGES_TOPIC --cluster ${CLUSTER_ID} || true
 $DELETE_TOPIC $CONNECTION_TOPIC --cluster ${CLUSTER_ID} || true
 $DELETE_TOPIC $HEARTBEAT_TOPIC --cluster ${CLUSTER_ID} || true
+$DELETE_TOPIC waterstream-kafka-table-${SESSION_TOPIC}-changelog --cluster ${CLUSTER_ID} || true
+
+
 
 ccloud kafka topic list --cluster ${CLUSTER_ID}
