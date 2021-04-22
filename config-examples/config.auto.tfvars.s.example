@@ -24,7 +24,7 @@ waterstream_replicas_count= "3"
 ###########################################
 ## The values below are set as default in .tf files
 
-waterstream_version = "1.3.12"
+waterstream_version = "1.3.14"
 # node_type = "n1-standard-1"
 # monitoring_node_type = "n1-standard-1"
 
