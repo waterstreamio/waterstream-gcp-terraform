@@ -15,6 +15,8 @@ export KAFKA_SASL_MECHANISM="PLAIN"
 export KAFKA_SECURITY_PROTOCOL="SASL_SSL"
 export KAFKA_REQUEST_TIMEOUT_MS=20000
 export KAFKA_RETRY_BACKOFF_MS=500
+#export KAFKA_FETCH_MIN_BYTES=1
+export KAFKA_FETCH_MIN_BYTES=100000
 #Empty to disable transactional messages - a bit less guarantees, but much faster. To enable transactions specify
 # each instance must have its own stable value
 export KAFKA_TRANSACTIONAL_ID=
@@ -36,8 +38,6 @@ export KAFKA_STREAMS_STATE_DIRECTORY="/tmp/kafka-streams"
 export KAFKA_RESET_STREAMS_ON_START=false
 #Should it clean the local state directory when MQTTd stops
 export KAFKA_RESET_STREAMS_ON_EXIT=false
-#Queue length for reading messages from Kafka
-export CENTRALIZED_CONSUMER_LISTENER_QUEUE=32
 #Port for KafkaStreams app communication between nodes
 export KAFKA_STREAMS_APP_SERVER_PORT=1882
 #Shared token for KafkaStreams app communication between nodes
@@ -60,6 +60,7 @@ export MQTT_MAX_MESSAGE_SIZE=210000
 export MONITORING_PORT=1884
 #Should the metrics output also include standard JVM metrics
 export MONITORING_INCLUDE_JAVA_METRICS=true
+export MONITORING_EXTENDED_METRICS=true
 
 #SSL
 export SSL_ENABLED=false

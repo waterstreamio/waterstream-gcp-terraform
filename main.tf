@@ -206,6 +206,8 @@ export KAFKA_STREAMS_REPLICATION_FACTOR=${var.kafka_streams_replication_factor}
 export KAFKA_PRODUCER_LINGER_MS=${var.waterstream_kafka_linger_ms}
 export KAFKA_BATCH_SIZE=${var.waterstream_kafka_batch_size}
 export KAFKA_COMPRESSION_TYPE=${var.waterstream_kafka_compression_type}
+#Per-client queue length for reading messages from Kafka
+export CENTRALIZED_CONSUMER_LISTENER_QUEUE=${var.waterstream_centralized_consumer_listener_queue}
 EOF
 
     user-data = <<EOF
@@ -231,6 +233,7 @@ runcmd:
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/waterstream-license", -H, "Metadata-Flavor: Google", -o, waterstream.license]
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip", -H, "Metadata-Flavor: Google", -o, node_ip.txt]
   - echo scripts download done >> mqttd_start.log
+  - sudo -u mqttd docker login -u ${var.dockerhub_username} -p ${var.dockerhub_password}
   - chmod a+x config.sh
   - chmod a+x runDockerized.sh
   - sleep 10

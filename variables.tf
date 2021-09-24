@@ -70,6 +70,12 @@ variable "kafka_streams_replication_factor" {
   default     = 3
 }
 
+variable "waterstream_centralized_consumer_listener_queue" {
+  type        = number
+  default     = 32
+}
+
+
 
 ###########################################
 #############     DockerHub   #############
