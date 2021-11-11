@@ -73,23 +73,23 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(mqtt_proxy_publish_received[1m]))",
+          "expr": "sum(rate(mqtt_proxy_publish_received_total[1m]))",
           "instant": false,
           "legendFormat": "received rate, msg/sec",
           "refId": "B"
         },
         {
-          "expr": "sum(mqtt_proxy_publish_received)",
+          "expr": "sum(mqtt_proxy_publish_received_total)",
           "legendFormat": "received total count",
           "refId": "C"
         },
         {
-          "expr": "sum(rate(mqtt_proxy_published_to_kafka[1m]))",
+          "expr": "sum(rate(mqtt_proxy_published_to_kafka_total[1m]))",
           "legendFormat": "kafka publish rate, msg/sec",
           "refId": "A"
         },
         {
-          "expr": "sum(mqtt_proxy_published_to_kafka)",
+          "expr": "sum(mqtt_proxy_published_to_kafka_total)",
           "legendFormat": "kafka total publish count",
           "refId": "D"
         }
@@ -189,17 +189,17 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(mqtt_proxy_publish_sent[1m]))",
+          "expr": "sum(rate(mqtt_proxy_publish_sent_total[1m]))",
           "legendFormat": "rate, msg/sec",
           "refId": "B"
         },
         {
-          "expr": "sum(mqtt_proxy_publish_sent)",
+          "expr": "sum(mqtt_proxy_publish_sent_total)",
           "legendFormat": "total count",
           "refId": "C"
         },
         {
-          "expr": "sum(rate(mqtt_proxy_publish_sent[10m]))",
+          "expr": "sum(rate(mqtt_proxy_publish_sent_total[10m]))",
           "legendFormat": "rate 10m, msg/sec",
           "refId": "A"
         }
@@ -376,23 +376,23 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(mqtt_proxy_subscribe_received)",
+          "expr": "sum(mqtt_proxy_subscribe_received_total)",
           "legendFormat": "SUBSCRIBE received",
           "refId": "A"
         },
         {
-          "expr": "sum(mqtt_proxy_suback_sent)",
+          "expr": "sum(mqtt_proxy_suback_sent_total)",
           "hide": true,
           "legendFormat": "SUBACK sent",
           "refId": "B"
         },
         {
-          "expr": "sum(mqtt_proxy_unsubscribe_received)",
+          "expr": "sum(mqtt_proxy_unsubscribe_received_total)",
           "legendFormat": "UNSUBSCRIBE received",
           "refId": "C"
         },
         {
-          "expr": "sum(mqtt_proxy_unsuback_sent)",
+          "expr": "sum(mqtt_proxy_unsuback_sent_total)",
           "hide": true,
           "legendFormat": "UNSUBACK sent",
           "refId": "D"
@@ -483,42 +483,42 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(mqtt_proxy_connect_received)",
+          "expr": "sum(mqtt_proxy_connect_received_total)",
           "legendFormat": "CONNECT received",
           "refId": "A"
         },
         {
-          "expr": "sum(mqtt_proxy_accept_sent)",
+          "expr": "sum(mqtt_proxy_accept_sent_total)",
           "legendFormat": "ACCEPT sent",
           "refId": "B"
         },
         {
-          "expr": "sum(mqtt_proxy_inactive_clients_disconnected)",
+          "expr": "sum(mqtt_proxy_inactive_clients_disconnected_total)",
           "legendFormat": "Inactive clients disconnected",
           "refId": "C"
         },
         {
-          "expr": "sum(mqtt_proxy_connections_closed)",
+          "expr": "sum(mqtt_proxy_connections_closed_total)",
           "legendFormat": "connections closed",
           "refId": "D"
         },
         {
-          "expr": "sum(mqtt_proxy_disconnect_received)",
+          "expr": "sum(mqtt_proxy_disconnect_received_total)",
           "legendFormat": "DISCONNECT received",
           "refId": "E"
         },
         {
-          "expr": "sum(mqtt_proxy_connect_rejected)",
+          "expr": "sum(mqtt_proxy_connect_rejected_total)",
           "legendFormat": "connections rejected",
           "refId": "F"
         },
         {
-          "expr": "sum(mqtt_proxy_overloaded_clients_disconnected)",
+          "expr": "sum(mqtt_proxy_overloaded_clients_disconnected_total)",
           "legendFormat": "overloaded disconnected",
           "refId": "G"
         },
         {
-          "expr": "sum(mqtt_proxy_non_initialized_connections_closed)",
+          "expr": "sum(mqtt_proxy_non_initialized_connections_closed_total)",
           "legendFormat": "non-initialized connections closed",
           "refId": "H"
         }
@@ -788,22 +788,22 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(mqtt_proxy_sessions_fresh_start_count)",
+          "expr": "sum(mqtt_proxy_sessions_fresh_start_count_total)",
           "legendFormat": "Fresh sessions",
           "refId": "A"
         },
         {
-          "expr": "sum(mqtt_proxy_sessions_loaded_count)",
+          "expr": "sum(mqtt_proxy_sessions_loaded_count_total)",
           "legendFormat": "Loaded sessions",
           "refId": "B"
         },
         {
-          "expr": "sum(mqtt_proxy_sessions_not_found_count)",
+          "expr": "sum(mqtt_proxy_sessions_not_found_count_total)",
           "legendFormat": "Not found sessions",
           "refId": "C"
         },
         {
-          "expr": "sum(mqtt_proxy_sessions_load_duration)",
+          "expr": "sum(mqtt_proxy_sessions_load_duration_total)",
           "legendFormat": "Sessions load duration, ms",
           "refId": "D"
         }
@@ -978,7 +978,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "mqtt_proxy_kafka_consumer_historical_loop_records",
+          "expr": "mqtt_proxy_kafka_consumer_historical_loop_records_",
           "legendFormat": "Historical loop records",
           "refId": "A"
         },
@@ -1126,7 +1126,7 @@
     "list": []
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {

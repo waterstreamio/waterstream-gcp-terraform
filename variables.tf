@@ -42,7 +42,7 @@ variable "vpc_cidr_block" {
 
 variable "waterstream_version" {
   type        = string
-  default     = "1.3.14"
+  default     = "1.3.22"
 }
 
 variable "waterstream_replicas_count" {

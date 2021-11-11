@@ -427,7 +427,7 @@ EOF
 
 
 resource "google_compute_target_pool" "mqttd" {
-  name = "instance-pool"
+  name = "waterstream-instance-pool"
 
   health_checks = [
     google_compute_http_health_check.mqttd_monitoring.name,
