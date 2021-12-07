@@ -18,7 +18,8 @@ fi
 #ccloud api-key use ${API_KEY} --resource ${CLUSTER_ID}
 #
 
-DELETE_TOPIC="ccloud kafka topic delete"
+#DELETE_TOPIC="ccloud kafka topic delete"
+DELETE_TOPIC="confluent kafka topic delete"
 
 DEFAULT_MESSAGES_TOPIC=mqtt_messages
 SESSION_TOPIC=mqtt_sessions
@@ -36,4 +37,5 @@ $DELETE_TOPIC waterstream-kafka-table-${SESSION_TOPIC}-changelog --cluster ${CLU
 
 
 
-ccloud kafka topic list --cluster ${CLUSTER_ID}
+#ccloud kafka topic list --cluster ${CLUSTER_ID}
+confluent kafka topic list --cluster ${CLUSTER_ID}

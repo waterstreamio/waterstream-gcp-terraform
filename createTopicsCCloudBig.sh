@@ -18,7 +18,8 @@ fi
 #ccloud api-key use ${API_KEY} --resource ${CLUSTER_ID}
 #
 
-CREATE_TOPIC="ccloud kafka topic create"
+#CREATE_TOPIC="ccloud kafka topic create"
+CREATE_TOPIC="confluent kafka topic create"
 
 DEFAULT_MESSAGES_TOPIC=mqtt_messages
 SESSION_TOPIC=mqtt_sessions
@@ -48,4 +49,5 @@ $CREATE_TOPIC $RETAINED_MESSAGES_TOPIC --cluster ${CLUSTER_ID} --partitions 1  -
 $CREATE_TOPIC $CONNECTION_TOPIC --cluster ${CLUSTER_ID} --partitions 1 --config cleanup.policy=delete --config retention.ms=60000 || true
 $CREATE_TOPIC $HEARTBEAT_TOPIC --cluster ${CLUSTER_ID} --partitions 1 --config cleanup.policy=delete --config retention.ms=60000 || true
 
-ccloud kafka topic list --cluster ${CLUSTER_ID}
+#ccloud kafka topic list --cluster ${CLUSTER_ID}
+confluent kafka topic list --cluster ${CLUSTER_ID}

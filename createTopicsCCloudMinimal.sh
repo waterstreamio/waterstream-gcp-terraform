@@ -18,7 +18,8 @@ fi
 #ccloud api-key use ${API_KEY} --resource ${CLUSTER_ID}
 #
 
-CREATE_TOPIC="ccloud kafka topic create"
+#CREATE_TOPIC="ccloud kafka topic create"
+CREATE_TOPIC="confluent kafka topic create"
 
 DEFAULT_MESSAGES_TOPIC=mqtt_messages
 SESSION_TOPIC=mqtt_sessions
