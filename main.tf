@@ -81,9 +81,11 @@ resource "google_compute_firewall" "mqttd-debug" {
   allow {
     protocol = "tcp"
     ports = [
-      "22",
-      "1883",
-      "1884"
+      "22", //SSH
+      "1883", //MQTT
+      "1884", //Prometheus metrics
+      "5000", //JMX
+      "5001", //RMI
     ]
   }
 
@@ -181,19 +183,21 @@ resource "google_compute_instance_template" "mqttd" {
     source_image = "cos-cloud/cos-stable"
     auto_delete = true
     boot = true
+    disk_size_gb = var.node_disk_size_gb
   }
 
   network_interface {
     network = google_compute_network.net.id
 
     //uncomment to grant public IP
-    //access_config { }
+#    access_config { }
   }
 
   metadata = {
     app = "mqttd"
     mqttd-config-sh = file("mqttd/config.sh")
     mqttd-run-dockerized-sh = file("mqttd/runDockerized.sh")
+    mqttd-logback-xml = file("mqttd/logback.xml")
     waterstream-license = file("waterstream.license")
     tf-config-sh = <<EOF
 #!/bin/sh
@@ -230,8 +234,10 @@ runcmd:
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/tf-config-sh", -H, "Metadata-Flavor: Google", -o, tfConfig.sh]
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/mqttd-config-sh", -H, "Metadata-Flavor: Google", -o, config.sh]
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/mqttd-run-dockerized-sh", -H, "Metadata-Flavor: Google", -o, runDockerized.sh]
+  - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/mqttd-logback-xml", -H, "Metadata-Flavor: Google", -o, logback.xml]
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/attributes/waterstream-license", -H, "Metadata-Flavor: Google", -o, waterstream.license]
   - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/ip", -H, "Metadata-Flavor: Google", -o, node_ip.txt]
+  - [curl, "http://metadata.google.internal/computeMetadata/v1/instance/network-interfaces/0/access-configs/0/external-ip", -H, "Metadata-Flavor: Google", -o, external_ip.txt]
   - echo scripts download done >> mqttd_start.log
   - sudo -u mqttd docker login -u ${var.dockerhub_username} -p ${var.dockerhub_password}
   - chmod a+x config.sh

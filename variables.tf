@@ -13,6 +13,12 @@ variable "node_type" {
   default = "n1-standard-1"
 }
 
+variable "node_disk_size_gb" {
+  type = number
+  default = 10
+}
+
+
 variable "monitoring_node_type" {
   default = "n1-standard-1"
 }

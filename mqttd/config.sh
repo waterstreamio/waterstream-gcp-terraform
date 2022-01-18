@@ -43,6 +43,8 @@ export KAFKA_STREAMS_APP_SERVER_PORT=1882
 #Shared token for KafkaStreams app communication between nodes
 export KAFKA_STREAMS_APP_SERVER_SHARED_TOKEN=sampleToken
 
+export CENTRALIZED_CONSUMER_CLIENT_TIMEOUT_MS=15000
+
 #MQTT settings
 #=============
 export MQTT_PORT=1883
