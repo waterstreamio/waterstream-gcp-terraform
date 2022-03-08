@@ -22,7 +22,7 @@ CLEANUP=""
 
 JMX_PORT=5000
 RMI_PORT=5001
-#EXTERNAL_IP=`cat $SCRIPT_DIR/external_ip.txt`
+EXTERNAL_IP=`cat $SCRIPT_DIR/external_ip.txt`
 #DEBUG_OPTIONS="-Dcom.sun.management.jmxremote=true -Dcom.sun.management.jmxremote.port=$JMX_PORT -Dcom.sun.management.jmxremote.rmi.port=$RMI_PORT -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Djava.rmi.server.hostname=$EXTERNAL_IP -XX:NativeMemoryTracking=detail"
 DEBUG_OPTIONS=""
 

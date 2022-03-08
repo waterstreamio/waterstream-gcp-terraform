@@ -48,7 +48,7 @@ variable "vpc_cidr_block" {
 
 variable "waterstream_version" {
   type        = string
-  default     = "1.3.24"
+  default     = "1.3.26"
 }
 
 variable "waterstream_replicas_count" {
@@ -102,13 +102,51 @@ variable "dockerhub_password" {
 ###########################################
 ############# Confluent Cloud #############
 ###########################################
+#
+#variable "bootstrap_server" {
+#}
+#
+#variable "ccloud_api_key" {
+#}
+#
+#variable "ccloud_api_secret" {
+#}
+#
 
-variable "bootstrap_server" {
+###############################################################
+## Kafka cluster connection
+###############################################################
+
+variable "kafka_bootstrap_servers" {
+  type = string
 }
 
-variable "ccloud_api_key" {
+variable "kafka_sslEndpointIdentificationAlgorithm" {
+  type = string
+  description = "ssl.endpoint.identification.algorithm for producer and consumer"
+  default = ""
 }
 
-variable "ccloud_api_secret" {
+variable "kafka_saslJaasConfig" {
+  description = "sasl.jaas.config for producer and consumer"
+  type = string
+  default = ""
 }
 
+variable "kafka_saslMechanism" {
+  type = string
+  description = "`sasl.mechanism` for producer and consumer"
+  default = ""
+}
+
+variable "kafka_securityProtocol" {
+  type = string
+  description = "security.protocol for producer and consumer"
+  default = "PLAINTEXT"
+}
+
+variable "kafka_requestTimeoutMs" {
+  type = number
+  description = "request.timeout.ms for producer and consumer"
+  default = 30000
+}

@@ -202,8 +202,12 @@ resource "google_compute_instance_template" "mqttd" {
     tf-config-sh = <<EOF
 #!/bin/sh
 export WATERSTREAM_VERSION=${var.waterstream_version}
-export CCLOUD_API_KEY=${var.ccloud_api_key}
-export CCLOUD_API_SECRET=${var.ccloud_api_secret}
+export KAFKA_BOOTSTRAP_SERVERS=${var.kafka_bootstrap_servers}
+export KAFKA_SECURITY_PROTOCOL=${var.kafka_securityProtocol}
+export KAFKA_SASL_MECHANISM=${var.kafka_saslMechanism}
+export KAFKA_SASL_JAAS_CONFIG=${var.kafka_saslJaasConfig}
+export KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM=${var.kafka_sslEndpointIdentificationAlgorithm}
+export KAFKA_REQUEST_TIMEOUT_MS=${var.kafka_requestTimeoutMs}
 export WATERSTREAM_RAM_PERCENTAGE=${var.waterstream_ram_percentage}
 export KAFKA_STREAMS_APP_SERVER_HOST=`cat node_ip.txt`
 export KAFKA_STREAMS_REPLICATION_FACTOR=${var.kafka_streams_replication_factor}

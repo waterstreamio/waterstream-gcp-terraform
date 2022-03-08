@@ -622,7 +622,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "MQTTD GC",
+      "title": "GC",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -706,13 +706,23 @@
           "expr": "jvm_memory_bytes_max{service=\"mqttd-monitoring\", area=\"heap\"}",
           "legendFormat": "Heap max size, bytes ({{instance}})",
           "refId": "B"
+        },
+        {
+          "expr": "process_resident_memory_bytes{service=\"mqttd-monitoring\"}",
+          "legendFormat": "Waterstream process resident memory, bytes ({{instance}})",
+          "refId": "C"
+        },
+        {
+          "expr": "jvm_buffer_pool_used_bytes{service=\"mqttd-monitoring\", pool=\"direct\"}",
+          "legendFormat": "Direct buffers used, bytes ({{instance}})",
+          "refId": "D"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "MQTTD Heap",
+      "title": "Memory",
       "tooltip": {
         "shared": true,
         "sort": 0,

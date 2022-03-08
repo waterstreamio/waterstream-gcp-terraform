@@ -8,12 +8,6 @@ SCRIPT_DIR=`realpath $(dirname "$0")`
 
 #Kafka config
 #============
-export KAFKA_BOOTSTRAP_SERVERS=pkc-4r297.europe-west1.gcp.confluent.cloud:9092
-export KAFKA_SASL_JAAS_CONFIG="org.apache.kafka.common.security.plain.PlainLoginModule required username=\"${CCLOUD_API_KEY}\" password=\"${CCLOUD_API_SECRET}\";"
-export KAFKA_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM="https"
-export KAFKA_SASL_MECHANISM="PLAIN"
-export KAFKA_SECURITY_PROTOCOL="SASL_SSL"
-export KAFKA_REQUEST_TIMEOUT_MS=20000
 export KAFKA_RETRY_BACKOFF_MS=500
 #export KAFKA_FETCH_MIN_BYTES=1
 export KAFKA_FETCH_MIN_BYTES=100000
