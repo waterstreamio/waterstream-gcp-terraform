@@ -11,6 +11,8 @@ SCRIPT_DIR=`realpath $(dirname "$0")`
 export KAFKA_RETRY_BACKOFF_MS=500
 #export KAFKA_FETCH_MIN_BYTES=1
 export KAFKA_FETCH_MIN_BYTES=100000
+export KAFKA_FETCH_MAX_BYTES=50000000
+export KAFKA_FETCH_MAX_WAIT_MS=500
 #Empty to disable transactional messages - a bit less guarantees, but much faster. To enable transactions specify
 # each instance must have its own stable value
 export KAFKA_TRANSACTIONAL_ID=
@@ -38,6 +40,8 @@ export KAFKA_STREAMS_APP_SERVER_PORT=1882
 export KAFKA_STREAMS_APP_SERVER_SHARED_TOKEN=sampleToken
 
 export CENTRALIZED_CONSUMER_CLIENT_TIMEOUT_MS=15000
+export CENTRALIZED_CONSUMER_HISTORICAL_POLL_PARALLELISM=10
+export KAFKA_HISTORICAL_POLL_TIMEOUT=10
 
 #MQTT settings
 #=============

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+export KAFKA_MESSAGES_DEFAULT_TOPIC=mqtt_messages
+export KAFKA_MESSAGES_DEFAULT_TOPIC_PARTITIONS=50
+export RETAINED_MESSAGES_TOPIC=mqtt_retained_messages
+export SESSION_TOPIC=mqtt_sessions
+export CONNECTION_TOPIC=mqtt_connections
