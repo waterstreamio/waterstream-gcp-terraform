@@ -150,3 +150,9 @@ variable "kafka_requestTimeoutMs" {
   description = "request.timeout.ms for producer and consumer"
   default = 30000
 }
+
+variable "nat_ports_per_vm" {
+  description = "How many client connections per node does the NAT support. Number of connections from WS node to Kafka cluster can't exceed this number"
+  type = number
+  default = 1000
+}
