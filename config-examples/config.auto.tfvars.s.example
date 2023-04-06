@@ -5,6 +5,13 @@ project = "<YOUR-GCP-PROJECT>"
 region = "<YOUR-GCP-REGION>"
 zone =  "<YOUR-GCP-ZONE>"
 
+###########################################
+#############     DockerHub   #############
+###########################################
+
+dockerhub_username = "your username"
+dockerhub_password = "your password"
+
 ###############################################################
 ## Kafka
 ###############################################################
@@ -28,7 +35,7 @@ waterstream_replicas_count= "3"
 ###########################################
 ## The values below are set as default in .tf files
 
-waterstream_version = "1.4.9"
+waterstream_version = "1.4.16"
 # node_type = "n1-standard-1"
 # monitoring_node_type = "n1-standard-1"
 
